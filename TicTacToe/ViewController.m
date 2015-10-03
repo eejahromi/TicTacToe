@@ -65,20 +65,20 @@
     long cellTag = selectedLabel.tag;
     
     if ([[gameCells objectAtIndex:cellTag]intValue] == 0) {
-        if (playerOne) {
+        if (playerOne == YES) {
             selectedLabel.text = @"X";
             selectedLabel.textColor = [UIColor blueColor];
             [gameCells replaceObjectAtIndex:cellTag withObject:@1];
-            self.whichPlayerLabel.text = @"Player One";
+            self.whichPlayerLabel.text = @"Player Two";
         }else{
             selectedLabel.text = @"O";
             selectedLabel.textColor = [UIColor redColor];
             [gameCells replaceObjectAtIndex:cellTag withObject:@2];
-            self.whichPlayerLabel.text = @"Player Two";
+            self.whichPlayerLabel.text = @"Player One";
         }
         
         if ([self gameWon]) {
-            NSLog(@"Game Won");
+            [self whoWon:playerOne];
         }
         playerOne = !playerOne;
         
@@ -108,8 +108,10 @@
 
 
 -(BOOL)checkFirstCell:(int)first withSecond:(int)second andThird:(int)third{
+    
+    // All cells have to have a value in order to check
     if ([[gameCells objectAtIndex:first]intValue] == 0 || [[gameCells objectAtIndex:second]intValue] == 0 || [[gameCells objectAtIndex:third]intValue] == 0) {
-        // All cells have to have a value in order to check
+        
         return NO;
     }
 
@@ -125,7 +127,27 @@
 
 
 
-
+-(void)whoWon:(BOOL)player{
+    UIAlertController *alert;
+    
+    if (playerOne == YES) {
+        alert = [UIAlertController alertControllerWithTitle:@"Congradulations"
+                                                    message:@"Player One Won!"
+                                             preferredStyle:UIAlertControllerStyleAlert];
+    }else{
+        alert = [UIAlertController alertControllerWithTitle:@"Congradulations"
+                                                    message:@"Player Two Won!"
+                                             preferredStyle:UIAlertControllerStyleAlert];
+    }
+    
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK"
+                                                     style:UIAlertActionStyleDefault
+                                                            handler:^(UIAlertAction *action) {
+                                                                [self startNewGame];
+                                                            }];
+    [alert addAction:action];
+    [self presentViewController:alert animated:YES completion:nil];
+}
 
 
 

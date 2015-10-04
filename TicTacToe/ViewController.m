@@ -21,7 +21,9 @@
 @property (weak, nonatomic) IBOutlet UIStackView *stackView;
 
 @property (weak, nonatomic) IBOutlet UILabel *whichPlayerLabel;
-@property (strong,nonatomic) NSArray *labelArray;
+@property (weak, nonatomic) IBOutlet UILabel *timerLabel;
+@property (assign, nonatomic) int number;
+@property (strong,nonatomic) NSTimer *timer;
 @end
 
 @implementation ViewController{
@@ -34,6 +36,8 @@
     [super viewDidLoad];
     
     [self startNewGame];
+    self.timerLabel.text = @"";
+    self.number = 10;
     
 }
 
@@ -54,7 +58,6 @@
     
 }
 
-
 - (IBAction)onLabelTapped:(UIGestureRecognizer *)sender {
     UILabel *selectedLabel = (UILabel *)sender.view;
 //    NSLog(@"Label %ld was tapped.",(long)selectedLabel.tag);
@@ -63,27 +66,47 @@
 
 -(void)fillLabel:(UILabel *)selectedLabel{
     long cellTag = selectedLabel.tag;
-    
+    [self.timer invalidate];
     if ([[gameCells objectAtIndex:cellTag]intValue] == 0) {
         if (playerOne == YES) {
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(startTimer) userInfo:nil repeats:YES];
             selectedLabel.text = @"X";
             selectedLabel.textColor = [UIColor blueColor];
+            self.number = 10;
             [gameCells replaceObjectAtIndex:cellTag withObject:@1];
             self.whichPlayerLabel.text = @"Player Two";
+            
         }else{
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(startTimer) userInfo:nil repeats:YES];
             selectedLabel.text = @"O";
             selectedLabel.textColor = [UIColor redColor];
+            self.number = 10;
             [gameCells replaceObjectAtIndex:cellTag withObject:@2];
             self.whichPlayerLabel.text = @"Player One";
         }
         
         if ([self gameWon]) {
+            [self.timer invalidate];
             [self whoWon:playerOne];
         }
         playerOne = !playerOne;
         
     }
     
+}
+
+-(void)startTimer{
+    self.timerLabel.text = [NSString stringWithFormat:@"%d",self.number--];
+    
+    if (self.number == -1) {
+        [self.timer invalidate];
+        playerOne = !playerOne;
+    }
+}
+
+
+-(void)sayHi{
+    NSLog(@"Hi");
 }
 
 -(BOOL)checkRows{

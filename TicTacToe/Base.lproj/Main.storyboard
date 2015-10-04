@@ -181,11 +181,23 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bic-3e-LAZ">
+                                <rect key="frame" x="225" y="60" width="150" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="243-z9-m9c"/>
+                                    <constraint firstAttribute="height" constant="52" id="xjl-IY-ZV7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="Bic-3e-LAZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="40" id="6nM-10-Lqc"/>
                             <constraint firstItem="dNP-Ys-6dm" firstAttribute="top" secondItem="AHD-hY-1SR" secondAttribute="bottom" constant="39" id="CfZ-Yi-tGd"/>
+                            <constraint firstItem="Bic-3e-LAZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RLo-F9-WOg"/>
                             <constraint firstItem="dNP-Ys-6dm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wJd-jW-pw9"/>
                             <constraint firstItem="QWc-KU-EZa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="xWj-ED-fRz"/>
                             <constraint firstItem="QWc-KU-EZa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yMe-l8-faD"/>
@@ -202,6 +214,7 @@
                         <outlet property="labelThree" destination="MY3-Ot-fYa" id="yaa-0b-jwc"/>
                         <outlet property="labelTwo" destination="Z7I-WO-dd4" id="8vw-an-wnJ"/>
                         <outlet property="stackView" destination="QWc-KU-EZa" id="E22-Zz-3qS"/>
+                        <outlet property="timerLabel" destination="Bic-3e-LAZ" id="x4V-SB-TdD"/>
                         <outlet property="whichPlayerLabel" destination="dNP-Ys-6dm" id="eul-Sp-5up"/>
                     </connections>
                 </viewController>
@@ -261,7 +274,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="873" y="426"/>
+            <point key="canvasLocation" x="438" y="395"/>
         </scene>
     </scenes>
 </document>

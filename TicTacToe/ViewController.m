@@ -31,13 +31,20 @@
 @implementation ViewController{
     BOOL playerOne;
     NSMutableArray *gameCells;
-    NSNumber *cellNumber;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.labelsArray = @[self.labelOne,self.labelTwo,self.labelThree,self.labelFour,self.labelFive,self.labelSix,self.labelSeven,self.labelEight,self.labelNine];
+    self.labelsArray = @[self.labelOne,
+                         self.labelTwo,
+                         self.labelThree,
+                         self.labelFour,
+                         self.labelFive,
+                         self.labelSix,
+                         self.labelSeven,
+                         self.labelEight,
+                         self.labelNine];
     
     [self startNewGame];
     self.timerLabel.text = @"";
@@ -54,21 +61,20 @@
         gameCells = [NSMutableArray arrayWithCapacity:9];
         
     }
-    
-    playerOne = YES;
-    self.whichPlayerLabel.text = @"Player One";
-    
-    self.timerLabel.text = @"";
-    
+
     for (int i=0;i<9;i++){
-//        UILabel *label = (UILabel *)[self.view viewWithTag:i];
-//        label.text = @"";
         UILabel *label = [self.labelsArray objectAtIndex:i];
         label.text = @"";
         [gameCells addObject:[NSNumber numberWithInt:0]];
         
         
     }
+    
+    playerOne = YES;
+    self.whichPlayerLabel.text = @"Player One";
+    self.timerLabel.text = @"";
+    
+
     
 }
 
@@ -79,30 +85,30 @@
 
 - (IBAction)onLabelTapped:(UIGestureRecognizer *)sender {
     UILabel *selectedLabel = (UILabel *)sender.view;
-//    NSLog(@"Label %ld was tapped.",(long)selectedLabel.tag);
     [self fillLabel:selectedLabel];
 }
 
 -(void)fillLabel:(UILabel *)selectedLabel{
     long cellTag = selectedLabel.tag;
     [self.timer invalidate];
+    
     if ([[gameCells objectAtIndex:cellTag]intValue] == 0) {
         if (playerOne == YES) {
             self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(startTimer) userInfo:nil repeats:YES];
+            [gameCells replaceObjectAtIndex:cellTag withObject:@1];
             selectedLabel.text = @"X";
             selectedLabel.textColor = [UIColor blueColor];
             selectedLabel.font = [UIFont fontWithName:@"Helvetica" size:30];
             self.number = 10;
-            [gameCells replaceObjectAtIndex:cellTag withObject:@1];
             self.whichPlayerLabel.text = @"Player Two";
             
         }else{
             self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(startTimer) userInfo:nil repeats:YES];
+            [gameCells replaceObjectAtIndex:cellTag withObject:@2];
             selectedLabel.text = @"O";
             selectedLabel.textColor = [UIColor redColor];
             selectedLabel.font = [UIFont fontWithName:@"Helvetica" size:30];
             self.number = 10;
-            [gameCells replaceObjectAtIndex:cellTag withObject:@2];
             self.whichPlayerLabel.text = @"Player One";
         }
         
@@ -110,6 +116,8 @@
             [self.timer invalidate];
             [self whoWon:playerOne];
         }
+        
+        // Switch turns
         playerOne = !playerOne;
         
     }
@@ -117,6 +125,8 @@
 }
 
 -(void)startTimer{
+    
+    // Update time and counter
     self.timerLabel.text = [NSString stringWithFormat:@"%d",self.number--];
     
     if (self.number == -1) {
@@ -125,18 +135,12 @@
     }
 }
 
-
--(void)sayHi{
-    NSLog(@"Hi");
-}
-
 -(BOOL)checkRows{
     for (int i=0; i < 3; i++) {
         if ([self checkFirstCell:i withSecond:i + 3 andThird:i + 6]) {
             return YES;
         }
     }
-    
     return NO;
 }
 
@@ -146,7 +150,6 @@
             return YES;
         }
     }
-
     return NO;
 }
 
@@ -166,13 +169,17 @@
 
 
 -(BOOL)gameWon{
-    return [self checkRows] || [self checkColumns] || [self checkFirstCell:0 withSecond:4 andThird:8] || [self checkFirstCell:2 withSecond:4 andThird:6];
+    return [self checkRows] || [self checkColumns] ||
+    [self checkFirstCell:0 withSecond:4 andThird:8] ||
+    [self checkFirstCell:2 withSecond:4 andThird:6];
 }
 
 
 
 -(void)whoWon:(BOOL)player{
     UIAlertController *alert;
+    
+    // Display alert depending on who won the game
     
     if (playerOne == YES) {
         alert = [UIAlertController alertControllerWithTitle:@"Congradulations"

@@ -15,6 +15,7 @@
 		B2F53AA51BBDCBD5000F8683 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2F53AA31BBDCBD5000F8683 /* LaunchScreen.storyboard */; };
 		B2F53AB01BBDCBD5000F8683 /* TicTacToeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F53AAF1BBDCBD5000F8683 /* TicTacToeTests.m */; };
 		B2F53ABB1BBDCBD5000F8683 /* TicTacToeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F53ABA1BBDCBD5000F8683 /* TicTacToeUITests.m */; };
+		B2F53B6E1BC2077E000F8683 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F53B6D1BC2077E000F8683 /* HelpViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		B2F53AB61BBDCBD5000F8683 /* TicTacToeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TicTacToeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2F53ABA1BBDCBD5000F8683 /* TicTacToeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicTacToeUITests.m; sourceTree = "<group>"; };
 		B2F53ABC1BBDCBD5000F8683 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B2F53B6C1BC2077E000F8683 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
+		B2F53B6D1BC2077E000F8683 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,9 +104,11 @@
 		B2F53A941BBDCBD5000F8683 /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
+				B2F53A9E1BBDCBD5000F8683 /* Main.storyboard */,
 				B2F53A9B1BBDCBD5000F8683 /* ViewController.h */,
 				B2F53A9C1BBDCBD5000F8683 /* ViewController.m */,
-				B2F53A9E1BBDCBD5000F8683 /* Main.storyboard */,
+				B2F53B6C1BC2077E000F8683 /* HelpViewController.h */,
+				B2F53B6D1BC2077E000F8683 /* HelpViewController.m */,
 				B2F53AA11BBDCBD5000F8683 /* Assets.xcassets */,
 				B2F53AA31BBDCBD5000F8683 /* LaunchScreen.storyboard */,
 				B2F53AA61BBDCBD5000F8683 /* Info.plist */,
@@ -273,6 +278,7 @@
 				B2F53A9D1BBDCBD5000F8683 /* ViewController.m in Sources */,
 				B2F53A9A1BBDCBD5000F8683 /* AppDelegate.m in Sources */,
 				B2F53A971BBDCBD5000F8683 /* main.m in Sources */,
+				B2F53B6E1BC2077E000F8683 /* HelpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +502,7 @@
 				B2F53AC11BBDCBD5000F8683 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B2F53AC21BBDCBD5000F8683 /* Build configuration list for PBXNativeTarget "TicTacToeTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +511,7 @@
 				B2F53AC41BBDCBD5000F8683 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B2F53AC51BBDCBD5000F8683 /* Build configuration list for PBXNativeTarget "TicTacToeUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +520,7 @@
 				B2F53AC71BBDCBD5000F8683 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

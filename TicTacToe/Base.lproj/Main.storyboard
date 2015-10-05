@@ -191,6 +191,18 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cjy-ra-aGE">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="Settings" id="vOV-P2-sHl"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="9dL-Dw-u7R"/>
+                                    <barButtonItem title="Help" id="wyb-68-33z">
+                                        <connections>
+                                            <segue destination="ddh-ej-UU6" kind="presentation" id="HqB-QR-Jc4"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -198,8 +210,11 @@
                             <constraint firstItem="Bic-3e-LAZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="40" id="6nM-10-Lqc"/>
                             <constraint firstItem="dNP-Ys-6dm" firstAttribute="top" secondItem="AHD-hY-1SR" secondAttribute="bottom" constant="39" id="CfZ-Yi-tGd"/>
                             <constraint firstItem="Bic-3e-LAZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RLo-F9-WOg"/>
+                            <constraint firstItem="cjy-ra-aGE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="YrI-ef-KCx"/>
+                            <constraint firstItem="cjy-ra-aGE" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="j6a-wF-Uvb"/>
                             <constraint firstItem="dNP-Ys-6dm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wJd-jW-pw9"/>
                             <constraint firstItem="QWc-KU-EZa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="xWj-ED-fRz"/>
+                            <constraint firstItem="cjy-ra-aGE" firstAttribute="centerX" secondItem="dNP-Ys-6dm" secondAttribute="centerX" id="yLQ-4S-p5J"/>
                             <constraint firstItem="QWc-KU-EZa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yMe-l8-faD"/>
                         </constraints>
                     </view>
@@ -274,7 +289,68 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="438" y="395"/>
+            <point key="canvasLocation" x="619" y="369"/>
+        </scene>
+        <!--Help View Controller-->
+        <scene sceneID="p6X-JW-7a3">
+            <objects>
+                <viewController id="ddh-ej-UU6" customClass="HelpViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="H1M-8r-fn7"/>
+                        <viewControllerLayoutGuide type="bottom" id="LAt-Ey-adT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PzH-xE-mqD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IW7-Az-ylU">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="728-mG-Aru">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="40C-tl-rt2"/>
+                                    <barButtonItem title="Game" id="UKN-9O-oe7">
+                                        <connections>
+                                            <action selector="showGame:" destination="ddh-ej-UU6" id="Yqc-Qn-Gwi"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="XJd-ME-tYc">
+                                <rect key="frame" x="282" y="281" width="37" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="hn0-Ti-QVK"/>
+                                    <constraint firstAttribute="width" constant="37" id="j7u-Nv-I8d"/>
+                                </constraints>
+                                <color key="color" red="0.33997496617894735" green="0.4292196771526316" blue="0.96690047732105266" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IW7-Az-ylU" firstAttribute="bottom" secondItem="LAt-Ey-adT" secondAttribute="top" id="01a-Nz-q1Z"/>
+                            <constraint firstItem="IW7-Az-ylU" firstAttribute="top" secondItem="PzH-xE-mqD" secondAttribute="top" id="2SH-Qe-vMb"/>
+                            <constraint firstItem="LAt-Ey-adT" firstAttribute="top" secondItem="728-mG-Aru" secondAttribute="bottom" id="Nmc-fO-dtX"/>
+                            <constraint firstItem="IW7-Az-ylU" firstAttribute="leading" secondItem="728-mG-Aru" secondAttribute="leading" id="PNy-gY-Lje"/>
+                            <constraint firstItem="XJd-ME-tYc" firstAttribute="centerX" secondItem="PzH-xE-mqD" secondAttribute="centerX" id="aHb-rP-05V"/>
+                            <constraint firstItem="XJd-ME-tYc" firstAttribute="centerY" secondItem="PzH-xE-mqD" secondAttribute="centerY" id="hxh-5U-NaW"/>
+                            <constraint firstAttribute="trailing" secondItem="728-mG-Aru" secondAttribute="trailing" id="iKr-p6-Gma"/>
+                            <constraint firstAttribute="trailing" secondItem="IW7-Az-ylU" secondAttribute="trailing" id="iih-1X-nDr"/>
+                            <constraint firstItem="728-mG-Aru" firstAttribute="leading" secondItem="PzH-xE-mqD" secondAttribute="leading" id="kKP-Er-7R0"/>
+                            <constraint firstItem="IW7-Az-ylU" firstAttribute="trailing" secondItem="728-mG-Aru" secondAttribute="trailing" id="klU-Vi-Y45"/>
+                            <constraint firstItem="728-mG-Aru" firstAttribute="bottom" secondItem="LAt-Ey-adT" secondAttribute="top" id="tdM-DD-JSa"/>
+                            <constraint firstItem="728-mG-Aru" firstAttribute="leading" secondItem="PzH-xE-mqD" secondAttribute="leading" id="y8K-pY-6VW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="spinner" destination="XJd-ME-tYc" id="9hH-JP-gMy"/>
+                        <outlet property="webView" destination="IW7-Az-ylU" id="RaS-Ud-zZW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iHF-Xi-nzs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1307" y="369"/>
         </scene>
     </scenes>
 </document>

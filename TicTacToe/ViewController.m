@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelNine;
 @property (weak, nonatomic) IBOutlet UIStackView *stackView;
 
+@property (strong,nonatomic) NSMutableArray *labelsArray;
+
 @property (weak, nonatomic) IBOutlet UILabel *whichPlayerLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timerLabel;
 @property (assign, nonatomic) int number;
@@ -42,13 +44,17 @@
 }
 
 -(void)startNewGame{
-    gameCells = [[NSMutableArray alloc]init];
-    gameCells = [NSMutableArray arrayWithCapacity:9];
+    if (!gameCells) {
+        gameCells = [[NSMutableArray alloc]init];
+        gameCells = [NSMutableArray arrayWithCapacity:9];
+    }
+    
     playerOne = YES;
     self.whichPlayerLabel.text = @"Player One";
     
     for (int i=0;i<9;i++){
         [gameCells addObject:[NSNumber numberWithInt:0]];
+        //[self.labelsArray ]
     }
     
 }
@@ -72,6 +78,7 @@
             self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(startTimer) userInfo:nil repeats:YES];
             selectedLabel.text = @"X";
             selectedLabel.textColor = [UIColor blueColor];
+            selectedLabel.font = [UIFont fontWithName:@"Helvetica" size:30];
             self.number = 10;
             [gameCells replaceObjectAtIndex:cellTag withObject:@1];
             self.whichPlayerLabel.text = @"Player Two";
@@ -80,6 +87,7 @@
             self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(startTimer) userInfo:nil repeats:YES];
             selectedLabel.text = @"O";
             selectedLabel.textColor = [UIColor redColor];
+            selectedLabel.font = [UIFont fontWithName:@"Helvetica" size:30];
             self.number = 10;
             [gameCells replaceObjectAtIndex:cellTag withObject:@2];
             self.whichPlayerLabel.text = @"Player One";
@@ -171,6 +179,8 @@
     [alert addAction:action];
     [self presentViewController:alert animated:YES completion:nil];
 }
+
+
 
 
 

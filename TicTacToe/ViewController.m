@@ -20,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelNine;
 @property (weak, nonatomic) IBOutlet UIStackView *stackView;
 
-@property (strong,nonatomic) NSMutableArray *labelsArray;
+@property (strong,nonatomic) NSArray *labelsArray;
 
 @property (weak, nonatomic) IBOutlet UILabel *whichPlayerLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timerLabel;
@@ -37,6 +37,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.labelsArray = @[self.labelOne,self.labelTwo,self.labelThree,self.labelFour,self.labelFive,self.labelSix,self.labelSeven,self.labelEight,self.labelNine];
+    
     [self startNewGame];
     self.timerLabel.text = @"";
     self.number = 10;
@@ -44,17 +46,28 @@
 }
 
 -(void)startNewGame{
+    
+    [gameCells removeAllObjects];
+    
     if (!gameCells) {
         gameCells = [[NSMutableArray alloc]init];
         gameCells = [NSMutableArray arrayWithCapacity:9];
+        
     }
     
     playerOne = YES;
     self.whichPlayerLabel.text = @"Player One";
     
+    self.timerLabel.text = @"";
+    
     for (int i=0;i<9;i++){
+//        UILabel *label = (UILabel *)[self.view viewWithTag:i];
+//        label.text = @"";
+        UILabel *label = [self.labelsArray objectAtIndex:i];
+        label.text = @"";
         [gameCells addObject:[NSNumber numberWithInt:0]];
-        //[self.labelsArray ]
+        
+        
     }
     
 }

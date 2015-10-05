@@ -384,8 +384,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O6k-3b-0tB">
-                                <rect key="frame" x="115" y="119" width="90" height="30"/>
-                                <state key="normal" title="ONE PLAYER">
+                                <rect key="frame" x="114" y="119" width="93" height="30"/>
+                                <state key="normal" title="TWO PLAYER">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -407,6 +407,7 @@
                     <navigationItem key="navigationItem" id="AV9-Rb-HUr"/>
                     <connections>
                         <outlet property="firstLabel" destination="Md2-lM-sRe" id="wLF-0C-aJ7"/>
+                        <outlet property="onePlayerButton" destination="O6k-3b-0tB" id="fLi-e5-trb"/>
                         <outlet property="secondLabel" destination="abL-4n-Fes" id="4bP-O8-Sfb"/>
                     </connections>
                 </viewController>

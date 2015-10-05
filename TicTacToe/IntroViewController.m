@@ -11,6 +11,7 @@
 @interface IntroViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *firstLabel;
 @property (weak, nonatomic) IBOutlet UILabel *secondLabel;
+@property (weak, nonatomic) IBOutlet UIButton *onePlayerButton;
 
 @end
 
@@ -18,6 +19,8 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:NO];
+    
+
     self.firstLabel.alpha = 1.0;
     self.secondLabel.alpha = 1.0;
 }

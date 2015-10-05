@@ -37,7 +37,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     self.labelsArray = @[self.labelOne,
                          self.labelTwo,
                          self.labelThree,

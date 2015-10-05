@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C2F807D1BC2587E00438506 /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2F807C1BC2587E00438506 /* IntroViewController.m */; settings = {ASSET_TAGS = (); }; };
 		B2F53A971BBDCBD5000F8683 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F53A961BBDCBD5000F8683 /* main.m */; };
 		B2F53A9A1BBDCBD5000F8683 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F53A991BBDCBD5000F8683 /* AppDelegate.m */; };
 		B2F53A9D1BBDCBD5000F8683 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F53A9C1BBDCBD5000F8683 /* ViewController.m */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C2F807B1BC2587E00438506 /* IntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroViewController.h; sourceTree = "<group>"; };
+		7C2F807C1BC2587E00438506 /* IntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroViewController.m; sourceTree = "<group>"; };
 		B2F53A921BBDCBD5000F8683 /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2F53A961BBDCBD5000F8683 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B2F53A981BBDCBD5000F8683 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -105,6 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				B2F53A9E1BBDCBD5000F8683 /* Main.storyboard */,
+				7C2F807B1BC2587E00438506 /* IntroViewController.h */,
+				7C2F807C1BC2587E00438506 /* IntroViewController.m */,
 				B2F53A9B1BBDCBD5000F8683 /* ViewController.h */,
 				B2F53A9C1BBDCBD5000F8683 /* ViewController.m */,
 				B2F53B6C1BC2077E000F8683 /* HelpViewController.h */,
@@ -279,6 +284,7 @@
 				B2F53A9A1BBDCBD5000F8683 /* AppDelegate.m in Sources */,
 				B2F53A971BBDCBD5000F8683 /* main.m in Sources */,
 				B2F53B6E1BC2077E000F8683 /* HelpViewController.m in Sources */,
+				7C2F807D1BC2587E00438506 /* IntroViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,13 +19,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelEight;
 @property (weak, nonatomic) IBOutlet UILabel *labelNine;
 @property (weak, nonatomic) IBOutlet UIStackView *stackView;
+@property (assign, nonatomic) int touchCounter;
 
 @property (strong,nonatomic) NSArray *labelsArray;
 
 @property (weak, nonatomic) IBOutlet UILabel *whichPlayerLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timerLabel;
 @property (assign, nonatomic) int number;
-@property (strong,nonatomic) NSTimer *timer;
+@property (strong, nonatomic) NSTimer *timer;
 @end
 
 @implementation ViewController{
@@ -35,6 +36,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     
     self.labelsArray = @[self.labelOne,
                          self.labelTwo,
@@ -64,14 +66,14 @@
 
     for (int i=0;i<9;i++){
         UILabel *label = [self.labelsArray objectAtIndex:i];
+        label.backgroundColor = [UIColor colorWithRed:126/255.0 green:154/255.0 blue:190/255.0 alpha:1.0];
         label.text = @"";
         [gameCells addObject:[NSNumber numberWithInt:0]];
-        
-        
     }
     
+    self.touchCounter = 0;
     playerOne = YES;
-    self.whichPlayerLabel.text = @"Player One";
+    self.whichPlayerLabel.text = @"PLAYER ONE";
     self.timerLabel.text = @"";
     
 
@@ -89,6 +91,7 @@
 }
 
 -(void)fillLabel:(UILabel *)selectedLabel{
+    self.touchCounter++;
     long cellTag = selectedLabel.tag;
     [self.timer invalidate];
     
@@ -98,26 +101,40 @@
             [gameCells replaceObjectAtIndex:cellTag withObject:@1];
             selectedLabel.text = @"X";
             selectedLabel.textColor = [UIColor blueColor];
-            selectedLabel.font = [UIFont fontWithName:@"Helvetica" size:30];
             self.number = 10;
-            self.whichPlayerLabel.text = @"Player Two";
+            self.whichPlayerLabel.text = @"PLAYER TWO";
             
         }else{
             self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(startTimer) userInfo:nil repeats:YES];
             [gameCells replaceObjectAtIndex:cellTag withObject:@2];
             selectedLabel.text = @"O";
             selectedLabel.textColor = [UIColor redColor];
-            selectedLabel.font = [UIFont fontWithName:@"Helvetica" size:30];
             self.number = 10;
-            self.whichPlayerLabel.text = @"Player One";
+            self.whichPlayerLabel.text = @"PLAYER ONE";
+        }
+        
+        if (self.touchCounter == 9 && ![self gameWon]) {
+            // Game Tied
+            [self.timer invalidate];
+            UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Game Tied"
+                                                                                message:@"Tough Competition. Game Tied!"
+                                                                         preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"Start New Game"
+                                                             style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * _Nonnull action) {
+                                                               [self startNewGame];
+                                                           }];
+            [controller addAction:action];
+            [self presentViewController:controller animated:YES completion:nil];
         }
         
         if ([self gameWon]) {
+            // Game Won
             [self.timer invalidate];
             [self whoWon:playerOne];
         }
         
-        // Switch turns
+        // Switch turns, update touch counter
         playerOne = !playerOne;
         
     }
@@ -163,8 +180,18 @@
     }
 
     // If the cells are the same return YES
-    return([[gameCells objectAtIndex:first]intValue] == [[gameCells objectAtIndex:second]intValue] && [[gameCells objectAtIndex:second]intValue] == [[gameCells objectAtIndex:third]intValue]);
-
+    if([[gameCells objectAtIndex:first]intValue] == [[gameCells objectAtIndex:second]intValue] && [[gameCells objectAtIndex:second]intValue] == [[gameCells objectAtIndex:third]intValue]){
+        NSArray *winningCombo = @[[NSNumber numberWithInt:first],[NSNumber numberWithInt:second],[NSNumber numberWithInt:third]];
+        
+        for (NSNumber *number in winningCombo) {
+            UILabel *label = [self.labelsArray objectAtIndex:[number intValue]];
+            label.backgroundColor = [UIColor colorWithRed:126/255.0 green:154/255.0 blue:140/255.5 alpha:1.0];
+        }
+        
+        return YES;
+    }
+    
+    return NO;
 }
 
 
